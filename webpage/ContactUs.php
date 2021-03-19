@@ -1,5 +1,21 @@
 <!DOCTYPE html>
 
+
+<?php 
+
+if(isset($_POST['submit'])){
+
+$name = $_POST['name'];
+$email = $_POST['email'];
+$message = $_POST['message'];
+
+
+}
+
+
+?>
+
+
 <html>
 
 <head>
@@ -78,11 +94,11 @@
             <div class="contactForm">
                 <!-- sends email to the restaurants email -->
                 <!-- "mailto:Lejardin.RHU@outlook.com" is an email created for this restaurant  -->
-                <form method="post" action="mailto:Lejardin.RHU@outlook.com">
+                <form method="POST" action="">
                     <h2>Send Message</h2>
                     <div class="inputBox">
                         <!-- input of type text -->
-                        <input id="fullName" type="text" name="fullname" required="required">
+                        <input id="fullName" type="text" name="name" required="required">
                         <span> Full Name </span>
                     </div>
 
@@ -91,6 +107,13 @@
                         <input id="email" type="email" name="email" required="required">
                         <span> E-mail </span>
                     </div>
+
+                    <div class="inputBox">
+                        <!-- input of type email to validate user's input  -->
+                        <input id="message" type="text" name="message" required="required">
+                        <span> Message </span>
+                    </div>
+
                     <!-- submit button -->
                     <input id="submit" type="submit" name="submit" value="Go to Webmail">
 
