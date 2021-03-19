@@ -4,14 +4,14 @@
 <?php 
 
 if(isset($_POST['submit'])){
-
+  
 $name = $_POST['name'];
-$email = $_POST['email'];
-$message = $_POST['message'];
-$send = "aliyassine_2000@hotmail.com";
-$subject="TEST";
-
-mail($send,$subject,$message,$email);
+$from = $_POST['email'];
+$txt = $_POST['message'];
+$to = "aliyassine_2000@hotmail.com";
+$headers="From: $from";
+$subject="Subject";
+mail($to,$subject,$txt,$headers);
 }
 
 
