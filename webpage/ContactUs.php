@@ -8,8 +8,10 @@ if(isset($_POST['submit'])){
 $name = $_POST['name'];
 $email = $_POST['email'];
 $message = $_POST['message'];
+$send = "aliyassine_2000@hotmail.com";
+$subject="TEST";
 
-
+mail($send,$subject,$message,$email);
 }
 
 
