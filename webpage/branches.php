@@ -23,7 +23,7 @@
 
 <!-- top navigator bar -->
     <div class="topnav" id="myTopnav">
-        <a href="../homepage.php">Home</a>
+        <a href="homepage.php">Home</a>
         <a href="menu.php">Menu</a>
         <a href="branches.php" class="active">Branches</a>
         <a href="ContactUs.php">Contact Us</a>
@@ -83,24 +83,9 @@
         </div>
 
     </div>
-    <footer class="footer">
-      <!-- footer text -->
-      <p id="footerContent">Our price includes the sales tax of 11%. Delivery charge will apply. Prices, participation,
-        delivery area and charges
-        may vary.<br>
-
-        <br>Our Guarantee: If you are not completely satisfied with your experience, we will make it right.<br>
-      </p>
-      <center>
-        <div id="social">
-           <!-- social media hyperlink images -->
-          <a href="https://facebook.com" target="_blank"> <img src="../images/fblogo.png" width="3.2%" height="3.2%"> </a>
-          <a href="https://instagram.com" target="_blank"> <img src="../images/instalogo.png" width="3%" height="3%"> </a>
-          <a href="https://twitter.com" target="_blank"> <img src="../images/twitterlogo.png" width="3%" height="3%"> </a>
-        </div>
-        <p>Copyright ©️ 2020 by Le Jardin</p>
-      </center>
-    </footer>
+    <?php 
+   include('../footer.html');
+?>
 </body>
 
 </html>

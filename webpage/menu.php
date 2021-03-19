@@ -20,7 +20,7 @@
 
      <!-- top navigator bar -->
 <div class="topnav" id="myTopnav">
-    <a href="../homepage.php" >Home</a>
+    <a href="homepage.php">Home</a>
     <a href="menu.php" class="active">Menu</a>
     <a href="branches.php">Branches</a>
     <a href="ContactUs.php">Contact Us</a>
