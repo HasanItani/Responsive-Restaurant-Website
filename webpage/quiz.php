@@ -19,12 +19,12 @@
    
     <!-- top navigator bar -->
 <div class="topnav" id="myTopnav">
-    <a href="../homepage.html" >Home</a>
-    <a href="menu.html" >Menu</a>
-    <a href="branches.html">Branches</a>
-    <a href="ContactUs.html">Contact Us</a>
-    <a href="RateUs.html">Rate Us</a>
-    <a href="quiz.html" class="active">Quiz</a>
+    <a href="../homepage.php" >Home</a>
+    <a href="menu.php" >Menu</a>
+    <a href="branches.php">Branches</a>
+    <a href="ContactUs.php">Contact Us</a>
+    <a href="RateUs.php">Rate Us</a>
+    <a href="quiz.php" class="active">Quiz</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()"> <!-- JAVASCRIPT function to change navigator dynamically according to dimensions   -->
       <i class="fa fa-bars"></i>  <!-- imported icon that appears on low dimensions -->
     </a>

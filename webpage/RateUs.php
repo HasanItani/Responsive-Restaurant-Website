@@ -24,12 +24,12 @@
 <body>
    <!-- top navigator bar -->
   <div class="topnav" id="myTopnav">
-    <a href="../homepage.html" >Home</a> 
-    <a href="menu.html">Menu</a>
-    <a href="branches.html">Branches</a>
-    <a href="ContactUs.html">Contact Us</a>
-    <a href="RateUs.html" class="active">Rate Us</a>
-    <a href="quiz.html">Quiz</a>
+    <a href="../homepage.php" >Home</a> 
+    <a href="menu.php">Menu</a>
+    <a href="branches.php">Branches</a>
+    <a href="ContactUs.php">Contact Us</a>
+    <a href="RateUs.php" class="active">Rate Us</a>
+    <a href="quiz.php">Quiz</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()"> <!-- JAVASCRIPT function to change navigator dynamically according to dimensions   -->
       <i class="fa fa-bars"></i> <!-- imported icon that appears on low dimensions -->
     </a>
@@ -134,7 +134,7 @@
             <th colspan="2">
               <br><br>
               <!-- form refering to same webpage (since we dont have back-end server) -->
-              <form method="POST" action="RateUs.html"> 
+              <form method="POST" action="RateUs.php"> 
                 <!-- submit button alert triggering appreciation message when clicked  -->
                 <input type="submit" id="submit" onclick="alert('We appreciate your time taken to rate us')" onclick="rate()"></input>
               </form>
