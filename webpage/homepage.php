@@ -6,7 +6,7 @@
       <!-- title -->
     <title>LE JARDIN</title>
        <!-- Link to CSS file -->
-    <link rel="stylesheet" href="CSS/homepage.css">  
+    <link rel="stylesheet" href="../CSS/homepage.css">  
     <!-- Link to JAVASCRIPT file -->
     <script src="JAVASCRIPT/homepage.js" type="text/javascript"></script>
         <!-- helps keeping webpage responsive  -->
@@ -21,11 +21,11 @@
    <!-- top navigator bar -->
 <div class="topnav" id="myTopnav">
     <a href="#" class="active">Home</a>
-    <a href="webpage/menu.php">Menu</a>
-    <a href="webpage/branches.php">Branches</a>
-    <a href="webpage/ContactUs.php">Contact Us</a>
-    <a href="webpage/RateUs.php">Rate Us</a>
-    <a href="webpage/quiz.php">Quiz</a>
+    <a href="menu.php">Menu</a>
+    <a href="branches.php">Branches</a>
+    <a href="ContactUs.php">Contact Us</a>
+    <a href="RateUs.php">Rate Us</a>
+    <a href="quiz.php">Quiz</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">      <!-- JAVASCRIPT function to change navigator dynamically according to dimensions   -->
    
       <i class="fa fa-bars"></i> <!-- imported icon that appears on low dimensions -->
