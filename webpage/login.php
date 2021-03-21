@@ -1,4 +1,37 @@
 <!DOCTYPE html>
+<?php 
+if(isset($_POST["submit"])){
+// Sign UP
+if(strcmp($_POST["hidden"],"signup")==0){
+
+$username=$_POST["usernameup"];
+$password=$_POST["passwordup"];
+$repassword=$_POST["repasswordup"];
+$message="";
+if(strcmp($password,$repassword)==0){
+// same passwords
+
+
+
+}
+else{
+// passwords doesnt match
+$message="Passwords does not match ";
+
+}
+
+
+}
+
+// Sign In
+else{
+
+    $username=$_POST["usernamein"];
+    $password=$_POST["passwordin"];
+  
+}
+}
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,8 +43,8 @@
 <body>
 <div class="login-wrap">
 	<div class="login-html">
-		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
-		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+		<input id="tab-1" type="radio" name="tab" class="sign-in" ><label for="tab-1" class="tab">Sign In</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up" checked ><label for="tab-2" class="tab">Sign Up</label>
 		<div class="login-form">
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
@@ -28,7 +61,7 @@
 					<input id="check" type="checkbox" class="check" checked>
 					<label for="check"><span class="icon"></span> Keep me Signed in</label>
 				</div>
-                <input type="hidden" name="hiddenin">
+                <input type="hidden" name="hidden" value="signin">
                 <!-- ---------------------------------------------------- -->
 				<div class="group">
 					<input type="submit" class="button" name="submitin" value="Sign In">
@@ -56,8 +89,8 @@
 					<label for="pass" class="label">Repeat Password</label>
 					<input id="pass" type="password" name="repasswordup" class="input" data-type="password">
 				</div>
-
-                <input type="hidden" name="hiddenup">
+                <p style="color:red"><?=$message?></p>
+                <input type="hidden" name="hidden" value="signup">
 
 				<!-- <div class="group">
 					<label for="pass" class="label">Email Address</label>
@@ -66,7 +99,7 @@
                 </form>
                 <!-- --------------------------------------------------------------- -->
 				<div class="group">
-					<input type="submit" class="button" value="Sign Up">
+					<input type="submit" name="submit" class="button" value="Sign Up">
 				</div>
 				<div class="hr"></div>
 				<div class="foot-lnk">
