@@ -46,7 +46,7 @@ $message="Passwords does not match ";
 
 // Sign In
 else{
-
+// 
     $username=$_POST["usernamein"];
     $password=$_POST["passwordin"];
   
