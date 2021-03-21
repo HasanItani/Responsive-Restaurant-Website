@@ -1,19 +1,40 @@
 <!DOCTYPE html>
 <?php 
+$message="";
 if(isset($_POST["submit"])){
 // Sign UP
 if(strcmp($_POST["hidden"],"signup")==0){
 
-$username=$_POST["usernameup"];
+$email=$_POST["emailup"];
 $password=$_POST["passwordup"];
 $repassword=$_POST["repasswordup"];
-$message="";
+
 if(strcmp($password,$repassword)==0){
 // same passwords
+$file = "../data/form.txt";
+$registered = FALSE;
 
+if (count(file($file)) != 0){
+    foreach (file($file) as $line) {   
+        list($emailtemp,$pass) = explode(", ", $line);
+        if (strcmp($emailtemp, $email)==0){
+            $registered = TRUE;
+            break;
+        }
+    }
+}
 
+if ($registered){
+   $message="You are already registered, Go to SignIn Page";
 
 }
+else{
+    file_put_contents($file,$email.", ".$password."\n" ,FILE_APPEND);
+    $message="DONE!";
+}
+}
+
+
 else{
 // passwords doesnt match
 $message="Passwords does not match ";
