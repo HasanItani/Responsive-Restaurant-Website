@@ -29,7 +29,8 @@
     <a href="ContactUs.php">Contact Us</a>
     <a href="RateUs.php">Rate Us</a>
     <a href="quiz.php">Quiz</a>
-    <a href="login.php">Login / Signup</a>
+    <a href="login.php">Login</a>
+    <a <input type="checkbox" id="show">></a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">      <!-- JAVASCRIPT function to change navigator dynamically according to dimensions   -->
    
       <i class="fa fa-bars"></i> <!-- imported icon that appears on low dimensions -->
