@@ -60,12 +60,13 @@ if(isset($_POST["submit"])){
       <!-- <input type="checkbox" id="show">
       <label for="show" class="show-btn">View Form</label> -->
       <div class="container">
-        <label for="show" class="close-btn fas fa-times" title="close"></label>
+	  <a href="homepage.php"> <label for="show" class="close-btn fas fa-times" title="close"></label> </a>
+
         <div class="text">Login </div>
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
           <div class="data">
             <label>Email</label>
-            <input name="email" type="text" required>
+            <input name="email" type="email" required>
           </div>
 <div class="data">
             <label >Password</label>

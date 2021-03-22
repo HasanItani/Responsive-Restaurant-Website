@@ -25,7 +25,7 @@
     <a href="branches.php">Branches</a>
     <a href="ContactUs.php">Contact Us</a>
     <a href="RateUs.php">Rate Us</a>
-    <a href="quiz.php">Quiz</a>
+    <a href="quiz.php">Promo Code</a>
     <a href="login.php">Login</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">      <!-- JAVASCRIPT function to change navigator dynamically according to dimensions   -->
    
