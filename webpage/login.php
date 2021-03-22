@@ -3,13 +3,17 @@
 $message="";
 $message2="";
 $file = "../data/form.txt";
-
+$check1 = "checked";
+$check2 = "";
 
 if(isset($_POST["submitup"]) || isset($_POST["submitin"]) ){
     
 // Sign UP
 if(strcmp($_POST["hidden"],"signup")==0){
   
+    $check1 = "";
+    $check2 = "checked";
+
 $email=$_POST["emailup"];
 $password=$_POST["passwordup"];
 $repassword=$_POST["repasswordup"];
@@ -53,6 +57,8 @@ $message="Passwords does not match ";
 // Sign In
 elseif(strcmp($_POST["hidden"],"signin")==0){
 
+    $check1 = "checked";
+    $check2 = "";
     
     $email = $_POST["emailin"];
     $password = $_POST["passwordin"];
@@ -101,10 +107,17 @@ elseif(strcmp($_POST["hidden"],"signin")==0){
     <link rel="stylesheet" href="../CSS/login.css">
 </head>
 <body>
+<!--  -->
+
+
 <div class="login-wrap">
+
+
+
 	<div class="login-html">
-		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
-		<input id="tab-2" type="radio" name="tab" class="sign-up"  ><label for="tab-2" class="tab">Sign Up</label>
+   
+		<input id="tab-1" type="radio" name="tab" class="sign-in" <?=$check1 ?> ><label for="tab-1" class="tab">Sign In</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up" <?=$check2 ?> ><label for="tab-2" class="tab">Sign Up</label>
 		<div class="login-form">
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
@@ -130,6 +143,7 @@ elseif(strcmp($_POST["hidden"],"signin")==0){
 				<div class="hr"></div>
 				<div class="foot-lnk">
 					<a href="#forgot">Forgot Password?</a>
+                   
 				</div>
 			</div>
 </form>        
@@ -151,16 +165,19 @@ elseif(strcmp($_POST["hidden"],"signin")==0){
 					<input id="pass" type="password" name="repasswordup" class="input" data-type="password" required>
 				</div>
                 <p style="color:red"><?=$message?></p>
-                <input type="hidden" name="hidden" value="signup">
-
+                <input type="hidden" name="hidden" value="signup" ">
+                
 				<!-- <div class="group">
 					<label for="pass" class="label">Email Address</label>
 					<input id="pass" type="text" class="input">
 				</div> -->
-                </form>
+
                 <!-- --------------------------------------------------------------- -->
 				<div class="group">
-					<input type="submit" name="submitup" class="button" value="Sign Up">
+					<input type="submit" name="submitup" class="button" value="Sign Up" onclick="check();>
+        </form>
+       
+
 				</div>
 				<div class="hr"></div>
 				<div class="foot-lnk">
@@ -170,5 +187,6 @@ elseif(strcmp($_POST["hidden"],"signin")==0){
 		</div>
 	</div>
 </div>
+       
 </body>
 </html>
