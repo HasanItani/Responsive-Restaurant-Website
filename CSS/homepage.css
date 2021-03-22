@@ -4,7 +4,7 @@ body {
   /* font family */
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-    /* homepage font color */
+  /* homepage font color */
   color: white;
   margin: 0;
   height: auto;
@@ -18,7 +18,7 @@ body {
 
 /* background color of top navigator bar */
 .topnav {
-  background-color: black;
+  background-color: red;
 }
 
 /* CSS of top navigator bar hyperlinks  */
@@ -34,7 +34,7 @@ body {
 
 /* CSS of top navigator bar hyperlinks on hover  */
 .topnav a:hover {
-   background-color: goldenrod; 
+  background-color: goldenrod;
   color: white;
 }
 
@@ -96,23 +96,21 @@ body {
 }
 
 /* Logo */
-#bodypic{
+#bodypic {
   margin: 0 auto;
-  display: none;  /*initially hidden (appears on low dimensions)*/
+  display: none; /*initially hidden (appears on low dimensions)*/
 }
-
-
 
 /*Responsivness - webpage*/
 /* activated when width is below 900px */
 @media screen and (max-width: 900px) {
-  body{
+  body {
     /* removes background */
     background: none;
     background-color: black;
   }
   /* adapts size and position of home side bar (mission statement) */
-  .HomeSidebar{
+  .HomeSidebar {
     width: 80%;
     height: 3%;
     padding-top: 0;
@@ -120,7 +118,7 @@ body {
     top: 100px;
   }
   /*  displays restaurants logo */
-  #bodypic{
+  #bodypic {
     z-index: 1;
     display: block;
     height: 20%;
@@ -128,21 +126,18 @@ body {
     position: relative;
     top: 100px;
     margin: 0 auto;
-    
   }
-
 }
 /*Responsivness - top navigator bar*/
 
 /* activated when width is below 600px */
 @media screen and (max-width: 600px) {
-
   /* Hides initial hyperlinks except home button (first child) */
   .topnav a:not(:first-child) {
-    display: none;}
+    display: none;
+  }
 
-
-    /* displays icon on top right */
+  /* displays icon on top right */
   .topnav a.icon {
     float: right;
     display: block;
@@ -164,4 +159,3 @@ body {
     text-align: left;
   }
 }
-
