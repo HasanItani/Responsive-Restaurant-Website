@@ -1,61 +1,35 @@
-<!DOCTYPE html>
+
 <?php 
-$message="";
-$file = "../data/form.txt";
+
+include('S-db-con.php');
+
+include('server.php');
+
+$query = 
+'CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(100) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8';
+
+if(!mysqli_query($mysqli, $query)){
+    echo 'Query error: '. mysqli_error($mysqli);
+    die();
+}
+// echo ' table created successfully<br>';
+
+?>
 
 
-if(isset($_POST["submit"])){
- 
-    
-    $email=$_POST["email"];
-    $password=$_POST["password"];
-    $repassword=$_POST["repassword"];
-    
-    if(strcmp($password,$repassword)==0){
-    // same passwords
-    
-    $registered = FALSE;
-    
-    if (count(file($file)) != 0){
-        foreach (file($file) as $line) {   
-            list($emailtemp,$pass) = explode(", ", $line);
-            if (strcmp($emailtemp, $email)==0){
-                $registered = TRUE;
-                break;
-            }
-        }
-    }
-    
-    if ($registered){
-       $message="You are already registered";
-    
-    }
-    else{
-        $put = "$email, $password, \n";
-        file_put_contents($file,$put,FILE_APPEND);
-        $message="DONE!";
-        header("Location: homepage.php");
-    }
-    }
-    
-    
-    else{
-    // passwords doesnt match
-    $message="Password does not match ";
-    
-    }
-    
-    
-    }
 
-            ?>
-
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <!-- <title>Popup Login Form Design | CodingNepal</title> -->
+   
     <link rel="stylesheet" href="../CSS/signup.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title> Sign Up </title>
   </head>
   <body>
     <div class="center">
@@ -65,23 +39,25 @@ if(isset($_POST["submit"])){
        <a href="homepage.php"> <label for="show" class="close-btn fas fa-times" title="close"></label> </a>
         <div class="text">Signup </div>
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+<?php include('errors.php'); ?>
           <div class="data">
             <label>Email</label>
-            <input name="email" type="email" required>
+            <input name="email" type="email"  value="<?= $email;?>" required>
           </div>
 <div class="data">
             <label >Password</label>
-            <input name="password" type="password" required><br><br>
+            <input name="password_1" type="password" required><br><br>
             <label >Repeat Password</label>
-            <input name="repassword" type="password" required><br>
-            <p style="color:red"><?=$message ?></p>
+            <input name="password_2" type="password" required><br>
           <br><br><br>
           </div>
           <br><br><br>
 <div class="btn">
             <div class="inner">
 </div>
-<button type="submit" name="submit">Register</button>
+<button type="submit" name="reg_user">Register</button>
+
+
           </div>
 <div class="signup-link">
 Already have an account? <a href="login.php">Login now</a></div>
