@@ -1,5 +1,51 @@
 <!DOCTYPE html>
 
+
+<?php
+session_start();
+include('../data/connect.php');
+$status="";
+if (isset($_POST['code']) && $_POST['code']!=""){
+$code = $_POST['code'];
+$result = mysqli_query(
+$con,
+"SELECT * FROM `products` WHERE `code`='$code'"
+);
+$row = mysqli_fetch_assoc($result);
+$name = $row['name'];
+$code = $row['code'];
+$price = $row['price'];
+$image = $row['image'];
+ 
+$cartArray = array(
+ $code=>array(
+ 'name'=>$name,
+ 'code'=>$code,
+ 'price'=>$price,
+ 'quantity'=>1,
+ 'image'=>$image)
+);
+ 
+if(empty($_SESSION["shopping_cart"])) {
+    $_SESSION["shopping_cart"] = $cartArray;
+    $status = "<div class='box'>Product is added to your cart!</div>";
+}else{
+    $array_keys = array_keys($_SESSION["shopping_cart"]);
+    if(in_array($code,$array_keys)) {
+ $status = "<div class='box' style='color:red;'>
+ Product is already added to your cart!</div>"; 
+    } else {
+    $_SESSION["shopping_cart"] = array_merge(
+    $_SESSION["shopping_cart"],
+    $cartArray
+    );
+    $status = "<div class='box'>Product is added to your cart!</div>";
+ }
+ 
+ }
+}
+?>
+
 <html>
 
 <head>
@@ -7,6 +53,7 @@
     <title>Le Jardin - Menu</title>
      <!-- Link to CSS file -->
      <link rel="stylesheet" href="../CSS/menu.css">
+     <link rel="stylesheet" href="../CSS/style.css">
     <!-- helps keeping webpage responsive  -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- external CSS library to import navigator bar icon  -->
@@ -18,6 +65,8 @@
 
 <body id="menupage">
 
+
+
      <!-- top navigator bar -->
 <div class="topnav" id="myTopnav">
     <a href="homepage.php">Home</a>
@@ -27,6 +76,13 @@
     <a href="RateUs.php">Rate Us</a>
     <a href="quiz.php">Promo Code</a>
     <a href="login.php">Login</a>
+    <a href="cart.php"><img style="height:30px; width:30px;" src="../save/cart-icon.png" /> Cart<span>
+    <?php 
+    if(!empty($_SESSION["shopping_cart"])) {
+$cart_count = count(array_keys($_SESSION["shopping_cart"]));}
+else{$cart_count=0;}
+echo $cart_count; ?></span></a>
+
     <a href="javascript:void(0);" class="icon" onclick="myFunction()"> <!-- JAVASCRIPT function to change navigator dynamically according to dimensions   -->
       <i class="fa fa-bars"></i> <!-- imported icon that appears on low dimensions -->
     </a>
@@ -118,215 +174,128 @@
         <!-- 1st element in accordion -->
         <button class="accordion">Breakfast & Brunch</button>
         <div class="panel">
-            <!-- images are placed in table -->
-            <table border="0px" class="table6">
-                <tr>
-                    <th>
-                        <!-- image & caption -->
-                        <img src="../images/bb1.jpg" class="image6">
-                        <p>Butter Croissant</p>
-                    </th>
-                    <th>
-                          <!-- image & caption -->
-                        <img src="../images/bb2.jpg" class="image6">
-                        <p>Club Sanwich</p>
-                    </th>
-                    <th>
-                          <!-- image & caption -->
-                        <img src="../images/bb3.jpg" class="image6">
-                        <p>Man'oushe</p>
-                    </th>
-                </tr>
-                <tr>
-                    <th>
-                          <!-- image & caption -->
-                        <img src="../images/bb4.jpg" class="image6">
-                        <p>Chorizo Omlette</p>
-                    </th>
-                    <th>
-                          <!-- image & caption -->
-                        <img src="../images/bb5.jpg" class="image6">
-                        <p>Turkey Sandwich</p>
-                    </th>
-                    <th>
-                          <!-- image & caption -->
-                        <img src="../images/bb6.jpg" class="image6">
-                        <p>Ultimate Pancake</p>
-                    </th>
-                </tr>
-            </table>
+
+
+<?php 
+        $result = mysqli_query($con,"SELECT * FROM `products` WHERE CATEGORY = 'breakfast-brunch' ");
+while($row = mysqli_fetch_assoc($result)){
+    echo "<div class='product_wrapper'>
+    <form method='post' action=''>
+    <input type='hidden' name='code' value=".$row['code']." />
+    <div class='image'><img class='test' src='../save/".$row['image']."' /></div>
+    <div class='name'>".$row['name']."</div>
+    <div class='price'>$".$row['price']."</div>
+    <button type='submit' class='buy'>Buy Now</button>
+    </form>
+    </div>";
+        }
+
+        ?>
         </div>
+
+
           <!-- 2nd element in accordion -->
         <button class="accordion">Pizza & Burgers</button>
         <div class="panel">
-             <!-- images are placed in table -->
-            <table class="table4">
-                <tr>
-                    <th>
-                          <!-- image & caption -->
-                        <img src="../images/burger1.jpg" class="image4">
-                        <p>Beef Burger</p>
-                    </th>
-                    <th>
-                          <!-- image & caption -->
-                        <img src="../images/burger2.jpg" class="image4">
-                        <p>Grilled Chicken Burger</p>
-                    </th>
-                </tr>
-                <tr>
-                    <th>
-                          <!-- image & caption -->
-                        <img src="../images/pizza1.jpg" class="image4">
-                        <p>Margheritta Pizza</p>
-                    </th>
-                    <th>
-                          <!-- image & caption -->
-                        <img src="../images/pizza2.jpg" class="image4">
-                        <p>Pepperoni Pizza</p>
-                    </th>
-                </tr>
-            </table>
+           <?php 
+        $result = mysqli_query($con,"SELECT * FROM `products` WHERE CATEGORY = 'pizza-burger' ");
+while($row = mysqli_fetch_assoc($result)){
+    echo "<div class='product_wrapper'>
+    <form method='post' action='#two'>
+    <input type='hidden' name='code' value=".$row['code']." />
+    <div class='image'  id='two'><img class='test' src='../save/".$row['image']."' /></div>
+    <div class='name'>".$row['name']."</div>
+    <div class='price'>$".$row['price']."</div>
+    <button type='submit' class='buy'>Buy Now</button>
+    </form>
+    </div>";
+        }
+
+        ?>
         </div>
 
           <!-- 3rd element in accordion -->
         <button class="accordion">Mains & Grills</button>
         <div class="panel">
-               <!-- images are placed in table -->
-            <table border="0px" class="table4">
-                <tr>
-                    <th>
-                         <!-- image & caption -->
-                        <img src="../images/main1.jpg" class="image4">
-                        <p>Chicken Fillet</p>
-                    </th>
-                    <th>
-                         <!-- image & caption -->
-                        <img src="../images/main2.jpg" class="image4">
-                        <p>Fillet Mignon</p>
-                    </th>
-                </tr>
-                <tr>
-                    <th>
-                         <!-- image & caption -->
-                        <img src="../images/main3.jpg" class="image4">
-                        <p>Salmon</p>
-                    </th>
-                    <th>
-                         <!-- image & caption -->
-                        <img src="../images/main4.jpg" class="image4">
-                        <p>Shrimp Pasta</p>
-                    </th>
-                </tr>
-            </table>
+        <?php 
+        $result = mysqli_query($con,"SELECT * FROM `products` WHERE CATEGORY = 'mains-grills' ");
+while($row = mysqli_fetch_assoc($result)){
+    echo "<div class='product_wrapper'>
+    <form method='post' action=''>
+    <input type='hidden' name='code' value=".$row['code']." />
+    <div class='image'><img class='test' src='../save/".$row['image']."' /></div>
+    <div class='name'>".$row['name']."</div>
+    <div class='price'>$".$row['price']."</div>
+    <button type='submit' class='buy'>Buy Now</button>
+    </form>
+    </div>";
+        }
+
+        ?>
         </div>
 
         <!-- 4th element in accordion -->
         <button class="accordion">Soups</button>
         <div class="panel">
-            <!-- images are placed in table -->
-            <table border="0px" class="table4">
-                <tr>
-                    <th>
-                         <!-- image & caption -->
-                        <img src="../images/soup3.jpg" class="image4">
-                        <p>Tomato Soup</p>
-                    </th>
-                    <th> 
-                        <!-- image & caption -->
-                        <img src="../images/soup2.jpg" class="image4">
-                        <p>Mushroom Soup</p>
-                    </th>
-                </tr>
-                <tr>
-                    <th>
-                         <!-- image & caption -->
-                        <img src="../images/soup1.jpg" class="image4">
-                        <p>Chicken Soup</p>
-                    </th>
-                    <th>
-                         <!-- image & caption -->
-                        <img src="../images/soup4.jpg" class="image4">
-                        <p>Lentil Soup</p>
-                    </th>
-                </tr>
-            </table>
+        <?php 
 
+        $result = mysqli_query($con,"SELECT * FROM `products` WHERE CATEGORY = 'soups' ");
+        while($row = mysqli_fetch_assoc($result)){
+        echo "<div class='product_wrapper'>
+        <form method='post' action=''>
+        <input type='hidden' name='code' value=".$row['code']." />
+        <div class='image'><img class='test' src='../save/".$row['image']."' /></div>
+        <div class='name'>".$row['name']."</div>
+        <div class='price'>$".$row['price']."</div>
+        <button type='submit' class='buy'>Buy Now</button>
+    </form>
+    </div>";
+        }
+
+        ?>
         </div>
 
         <!-- 5th element in accordion -->
         <button class="accordion">Desserts</button>
         <div class="panel">
-            <!-- images are placed in table -->
-            <table border="0px" class="table4">
-                <tr>
-                    <th>
-                         <!-- image & caption -->
-                        <img src="../images/dessert1.jpg" class="image4">
-                        <p>Cinamon Roll</p>
-                    </th>
-                    <th>
-                         <!-- image & caption -->
-                        <img src="../images/dessert2.jpg" class="image4">
-                        <p>Creme Brulee</p>
-                    </th>
-                </tr>
-                <tr>
-                    <th>
-                         <!-- image & caption -->
-                        <img src="../images/dessert3.jpg" class="image4">
-                        <p>Red Velvet Cake</p>
-                    </th>
-                    <th>
-                         <!-- image & caption -->
-                        <img src="../images/dessert4.jpg" class="image4">
-                        <p>Tiramisu</p>
-                    </th>
-                </tr>
-            </table>
+        <?php 
+                $result = mysqli_query($con,"SELECT * FROM `products` WHERE CATEGORY = 'desserts' ");
+             while($row = mysqli_fetch_assoc($result)){
+            echo "<div class='product_wrapper'>
+            <form method='post' action=''>
+            <input type='hidden' name='code' value=".$row['code']." />
+            <div class='image'><img class='test' src='../save/".$row['image']."' /></div>
+            <div class='name'>".$row['name']."</div>
+            <div class='price'>$".$row['price']."</div>
+            <button type='submit' class='buy'>Buy Now</button>
+            </form>
+            </div>";
+        }
+
+        ?>
         </div>
 
         <!-- 6th element in accordion -->
-        <button class="accordion">Bevarages</button>
+        <button class="accordion">Beverages</button>
         <div class="panel">
 
-            <!-- images are placed in table -->
-            <table border="0px" class="table6">
-                <tr>
-                    <th>
-                         <!-- image & caption -->
-                        <img src="../images/bevarage1.jpg" class="image6" width="300px" height="300px">
-                        <p>Cappuccino</p>
-                    </th>
-                    <th>
-                         <!-- image & caption -->
-                        <img src="../images/bevarage2.jpg" class="image6" width="300px" height="300px">
-                        <p>Espresso</p>
-                    </th>
-                    <th>
-                         <!-- image & caption -->
-                        <img src="../images/bevarage3.jpg" class="image6" width="300px" height="300px">
-                        <p>Minted Mojito</p>
-                    </th>
-                </tr>
-                <tr>
-                    <th>
-                         <!-- image & caption -->
-                        <img src="../images/bevarage4.jfif" class="image6" width="300px" height="300px">
-                        <p>Orange Juice</p>
+        <?php 
 
-                    </th>
-                    <th>
-                         <!-- image & caption -->
-                        <img src="../images/bevarage7.jpg" class="image6" width="300px" height="300px">
-                        <p>Oreo-Milkshake</p>
-                    </th>
-                    <th>
-                         <!-- image & caption -->
-                        <img src="../images/bevarage6.jfif" class="image6" width="300px" height="300px">
-                        <p>Tea</p>
-                    </th>
-                </tr>
-            </table>
+            $result = mysqli_query($con,"SELECT * FROM `products` WHERE CATEGORY = 'beverages' ");
+            while($row = mysqli_fetch_assoc($result)){
+            echo "<div class='product_wrapper'>
+            <form method='post' action=''>
+            <input type='hidden' name='code' value=".$row['code']." />
+            <div class='image'><img class='test' src='../save/".$row['image']."' /></div>
+            <div class='name'>".$row['name']."</div>
+            <div class='price'>$".$row['price']."</div>
+            <button type='submit' class='buy'>Buy Now</button>
+            </form>
+            </div>";
+        }
+
+        ?>
+
         </div>
 
 
@@ -334,9 +303,11 @@
     </div>
 
     <script>
-
+        var button = document.getElementsByClassName("buy");
         var acc = document.getElementsByClassName("accordion");
         var i;
+
+        
 
         for (i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function () {
@@ -349,6 +320,9 @@
                 }
             });
         }
+
+
+
 
         /* manual slideshow */
 
