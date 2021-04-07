@@ -2,6 +2,7 @@
 
 
 <?php
+$search="";
  $style= "";
 $message="";
 $message2="";
@@ -61,6 +62,12 @@ if(isset($_POST['submitdelete'])){
     }
 }
 
+if(isset($_POST['submitsearch'])){
+
+    $search=$_POST['category'];
+    
+}
+
 ?>
 
 
@@ -118,13 +125,13 @@ if(isset($_POST['submitdelete'])){
 
 
 
-    <form action="" method="POST">
+   
 
 <fieldset>
 <legend>Delete</legend>
 
 <?php
- $result = mysqli_query($con,"SELECT * FROM `products`");
+ $result = mysqli_query($con,"SELECT * FROM `products` where category = '$search'");
       ?>
       <table border="1" style= "background-color: #0000; color: black; margin: 0 auto;" >
       <thead>
@@ -155,6 +162,34 @@ if(isset($_POST['submitdelete'])){
       </tbody>
     </table>
 <br>
+
+<form action="" method="POST">
+
+<p>Search:</p>
+<input type="radio" id="breakfast-brunch" name="category" value="breakfast-brunch">
+<label for="breakfast-brunch">Breakfast & Bunch</label><br>
+
+<input type="radio" id="pizza-burger" name="category" value="pizza-burger">
+<label for="pizza-burger">Pizza & Burger</label><br>
+
+<input type="radio" id="mains-grills" name="category" value="mains-grills">
+<label for="mains-grills">Mains & Grills</label><br>
+
+<input type="radio" id="soups" name="category" value="soups">
+<label for="soups">Soups</label><br>
+
+<input type="radio" id="desserts" name="category" value="desserts">
+<label for="desserts">Desserts</label><br>
+
+
+<input type="radio" id="beverages" name="category" value="beverages">
+<label for="beverages">Beverages</label><br>
+<br>
+<input type="submit" name="submitsearch" value="Search">
+</form>
+<br>
+<hr>
+<form action="" method="POST">
     <label for="delete">Enter ID to delete:</label>
         <input type="number" name="delete" id="delete" required>
         <input type="submit" name="submitdelete">

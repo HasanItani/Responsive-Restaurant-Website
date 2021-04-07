@@ -109,6 +109,21 @@ body {
   height: 350px;
 }
 
+
+.test{
+        width: 300px;  
+        height: 200px;  
+        transition: transform .2s; 
+
+    }
+
+     .test:hover {
+        -ms-transform: scale(1.2); /* IE 9 */
+        -webkit-transform: scale(1.2); /* Safari 3-8 */
+        transform: scale(1.2); 
+            }  
+
+
 /*********  SLIDESHOW  **********/
 /* defines size of slideshow image container */
 .w3-container {
