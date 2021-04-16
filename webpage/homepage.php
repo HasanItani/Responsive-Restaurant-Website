@@ -19,6 +19,7 @@ include('count.php');
 
 </head>
 
+
 <body id="homepage">
    <!-- top navigator bar -->
 <div class="topnav" id="myTopnav">
