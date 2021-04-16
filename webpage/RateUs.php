@@ -33,7 +33,10 @@ include('count.php');
     <a href="ContactUs.php">Contact Us</a>
     <a href="RateUs.php" class="active">Rate Us</a>
     <a href="quiz.php">Promo Code</a>
-    <a href="signup.php">Signup/Login</a>
+    <a href="signup.php"><?php  if($_SESSION['success']=="You are now logged in") echo $_SESSION['name']; else echo "Signup/Login"; ?></a>
+<?php if($_SESSION['admin']=="true"){ ?>
+    <a href="add.php">ADD</a>
+<?php } ?>
     <a href="cart.php"><img style="height:20px; width:20px;" src="../save/cart-icon.png" /> Cart<span>
     <?php 
     if(!empty($_SESSION["shopping_cart"])) {

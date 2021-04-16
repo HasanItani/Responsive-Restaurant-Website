@@ -2,15 +2,25 @@
 
 
 <?php
+
+include('count.php');
+
+if($_SESSION['admin']=="false"){
+
+echo "ERROR!";
+
+}
+else{
+
 $search="";
  $style= "";
 $message="";
 $message2="";
+
 include('../data/connect.php');
 
 
 if(isset($_POST['submitadd'])){
-
 
 $name=$_POST['name'];
 $code=$_POST['code'];
@@ -18,11 +28,11 @@ $price=$_POST['price'];
 $category=$_POST['category'];
 
 
-
 $ImageName = $_FILES['image']['name'];
 $fileElementName = 'image';
 $path = '../save/'; 
 $location = $path . $_FILES['image']['name']; 
+
 
 if (move_uploaded_file($_FILES['image']['tmp_name'], $location)) {
     echo "File is valid, and was successfully uploaded.\n";
@@ -199,7 +209,8 @@ if(isset($_POST['submitsearch'])){
 
 
 </form>
-
-
+<?php 
+}
+?>
 </body>
 </html>

@@ -8,9 +8,12 @@ include('server.php');
 $query = 
 'CREATE TABLE IF NOT EXISTS `users` (
   `id` int(100) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` varchar(30) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8';
+  `password` varchar(100) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `admin` boolean NOT NULL
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8';
 
 if(!mysqli_query($mysqli, $query)){
     echo 'Query error: '. mysqli_error($mysqli);
@@ -54,18 +57,35 @@ else{
 
         <div class="text">Signup </div>
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
-<?php include('errors.php'); ?>
+
           <div class="data">
+          <label >Name</label>
+            <input name="name" type="name" required><br><br>
+</div>
+
+            <div class="data">
             <label>Email</label>
             <input name="email" type="email"  value="<?= $email;?>" required>
           </div>
+
+          <div class="data">
+          <label >Address</label>
+          <input name="address" type="address" required><br><br>
+</div>
+<div class="data">
+          <label >Validation Code (Admins Only)</label>
+          <input name="code" type="code"><br><br>
+</div>
 <div class="data">
             <label >Password</label>
             <input name="password_1" type="password" required><br><br>
             <label >Repeat Password</label>
             <input name="password_2" type="password" required><br>
-          <br><br><br>
+          <br>
+          <br><br>
+          
           </div>
+          
           <br><br><br>
 <div class="btn">
             <div class="inner">
@@ -74,6 +94,7 @@ else{
 
 
           </div>
+          <?php include('errors.php'); ?>
 <div class="signup-link">
 Already have an account? <a href="login.php">Login now</a></div>
 </form>

@@ -12,10 +12,13 @@
 
 <?php if($_SESSION['success']=="You are now logged in"){
 ?>
+
+<div class="error">
+
 <p>You are already signed in <?php echo $_SESSION['email']?> ! </p>
 <p>Would you like to <a href="signout.php">Sign out?</a></p>
 
-
+</div>
 
 
 <?php 

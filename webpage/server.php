@@ -12,6 +12,9 @@ include('S-db-con.php');
 if (isset($_POST['reg_user'])) {
   // receive all input values from the form
   $email = mysqli_real_escape_string($mysqli, $_POST['email']);
+  $name = mysqli_real_escape_string($mysqli, $_POST['name']);
+  $address = mysqli_real_escape_string($mysqli, $_POST['address']);
+  $code = mysqli_real_escape_string($mysqli, $_POST['code']);
   $password_1 = mysqli_real_escape_string($mysqli, $_POST['password_1']);
   $password_2 = mysqli_real_escape_string($mysqli, $_POST['password_2']);
 
@@ -39,14 +42,41 @@ if (isset($_POST['reg_user'])) {
 
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
+
+    if ($code == NULL){
+      $password = md5($password_1);//encrypt the password before saving in the database
+
+      $query = "INSERT INTO users (name,email, password,address,admin) 
+            VALUES('$name', '$email', '$password', '$address', false)";
+      mysqli_query($mysqli, $query);
+      $_SESSION['email'] = $email;
+      $_SESSION['name'] = $name ;
+      $_SESSION['admin'] = "false" ;
+      $_SESSION['success'] = "You are now logged in";
+      header('location: homepage.php');
+
+    }
+
+     elseif($code == 961){
   	$password = md5($password_1);//encrypt the password before saving in the database
 
-  	$query = "INSERT INTO users (email, password) 
-  			  VALUES('$email', '$password')";
+  	$query = "INSERT INTO users (name,email, password,address,admin) 
+  			  VALUES('$name', '$email', '$password', '$address', true)";
   	mysqli_query($mysqli, $query);
   	$_SESSION['email'] = $email;
+    $_SESSION['name'] = $name ;
+    $_SESSION['admin'] = "true" ;
   	$_SESSION['success'] = "You are now logged in";
-  	header('location: homepage.php');
+    header('location: homepage.php');
+      }
+      else{
+        array_push($errors, "Wrong Code!");
+      }
+
+
+
+  
+
   }
 }
 
@@ -65,14 +95,33 @@ if (isset($_POST['login_user'])) {
     }
   
     if (count($errors) == 0) {
+
         $password = md5($password);
+        
         $query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+
         $results = mysqli_query($mysqli, $query);
+
         if (mysqli_num_rows($results) == 1) {
-          $_SESSION['email'] = $email;
-          $_SESSION['success'] = "You are now logged in";
+
+          $row = mysqli_fetch_assoc( $results );
+
+         if($row['admin'] == 1 ){
+          $_SESSION['admin'] = "true";
+         }
+
+         else{
+          $_SESSION['admin'] = "false";
+         }
+        
+        $_SESSION['name'] = $row['name'];
+        $_SESSION['email'] = $email;
+        $_SESSION['success'] = "You are now logged in";
+          
           header('location: homepage.php');
-        }else {
+        }
+
+        else {
             array_push($errors, "Wrong username/password combination");
         }
     }
