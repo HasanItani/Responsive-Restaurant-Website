@@ -80,3 +80,7 @@
   -webkit-transform: scale(1.5); /* Safari 3-8 */
   transform: scale(1.5); 
       } 
+
+      .table.td{
+          color: goldenrod;
+      }

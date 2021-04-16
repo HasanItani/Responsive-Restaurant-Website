@@ -33,10 +33,29 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/cart.css">
+      <!-- external CSS library to import navigator bar icon  -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
     <title>Document</title>
 </head>
 <body>
     
+<div class="topnav" id="myTopnav">
+    <a href="homepage.php">Home</a>
+    <a href="menu.php">Menu</a>
+    <a href="branches.php">Branches</a>
+    <a href="ContactUs.php">Contact Us</a>
+    <a href="RateUs.php">Rate Us</a>
+    <a href="quiz.php">Promo Code</a>
+    <a href="signup.php">Signup/Login</a>
+    <a href="cart.php"class="active"><img style="height:15px; width:15px;" src="../save/cart-icon.png" /> Cart<span>
+    <?php 
+    if(!empty($_SESSION["shopping_cart"])) {
+$cart_count = count(array_keys($_SESSION["shopping_cart"]));}
+else{$cart_count=0;}
+echo $cart_count; ?></span></a>
+</div>
 <div class="cart">
 <?php
 if(isset($_SESSION["shopping_cart"])){

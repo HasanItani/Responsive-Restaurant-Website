@@ -3,6 +3,7 @@
 
 <?php 
 
+include('count.php');
 if(isset($_POST['submit'])){
   
 $name = $_POST['name'];
@@ -46,7 +47,13 @@ mail($to,$subject,$txt,$headers);
     <a href="ContactUs.php" class="active">Contact Us</a>
     <a href="RateUs.php">Rate Us</a>
     <a href="quiz.php">Promo Code</a>
-    <a href="login.php">Login</a>
+    <a href="signup.php">Signup/Login</a>
+    <a href="cart.php"><img style="height:20px; width:20px;" src="../save/cart-icon.png" /> Cart<span>
+    <?php 
+    if(!empty($_SESSION["shopping_cart"])) {
+$cart_count = count(array_keys($_SESSION["shopping_cart"]));}
+else{$cart_count=0;}
+echo $cart_count; ?></span></a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()"> <!-- JAVASCRIPT function to change navigator dynamically according to dimensions   -->
       <i class="fa fa-bars"></i>  <!-- imported icon that appears on low dimensions -->
     </a>

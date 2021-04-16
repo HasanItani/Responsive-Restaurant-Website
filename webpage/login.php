@@ -9,6 +9,21 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </head>
   <body>
+
+<?php if($_SESSION['success']=="You are now logged in"){
+?>
+<p>You are already signed in <?php echo $_SESSION['email']?> ! </p>
+<p>Would you like to <a href="signout.php">Sign out?</a></p>
+
+
+
+
+<?php 
+}
+
+else{
+?>
+
     <div class="center">
       <div class="container">
 	  <a href="homepage.php"> <label for="show" class="close-btn fas fa-times" title="close"></label> </a>
@@ -32,7 +47,7 @@
             <div class="inner">
 </div>
 <button type="submit" name="login_user">login</button>
-<?php  if (count($errors) > 0) : ?>
+<?php  if (count($errors) > 0) ?>
   <div class="error">
  
           </div>
@@ -41,5 +56,6 @@ Not a member? <a href="signup.php">Signup now</a></div>
 </form>
 </div>
 </div>
+<?php }?>
 </body>
 </html>

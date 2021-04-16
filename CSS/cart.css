@@ -1,0 +1,56 @@
+html ,body{
+    min-height: 500px;
+    height: auto !important; 
+    height:500px ;
+  
+  }
+  
+  /* defines font, size and color of body */
+  body {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    /* color: #333; */
+  
+    color: goldenrod;
+    font-weight: 300;
+    text-align: center;
+    /* background-color: #f8f6f0; */
+    margin: 0;
+  }
+  
+  /* background color of top navigator bar */
+  .topnav {
+    overflow: hidden;
+    background-color: black;
+  }
+  
+  /* CSS of top navigator bar hyperlinks  */
+  .topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* CSS of top navigator bar hyperlinks on hover  */
+  .topnav a:hover {
+     background-color: goldenrod; 
+    color: white;
+  }
+  
+  /* CSS of top navigator bar hyperlinks when activated */
+  .topnav a.active {
+    background-color: goldenrod;
+    color: white;
+  }
+  
+  /* top navigator bar icon */
+  .topnav .icon {
+    /* initially hidden (appears on low dimensions) */
+    display: none;
+  }
+  
+  

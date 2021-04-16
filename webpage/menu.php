@@ -75,7 +75,7 @@ if(empty($_SESSION["shopping_cart"])) {
     <a href="ContactUs.php">Contact Us</a>
     <a href="RateUs.php">Rate Us</a>
     <a href="quiz.php">Promo Code</a>
-    <a href="login.php">Login</a>
+    <a href="signup.php">Signup/Login</a>
     <a href="cart.php"><img style="height:30px; width:30px;" src="../save/cart-icon.png" /> Cart<span>
     <?php 
     if(!empty($_SESSION["shopping_cart"])) {
@@ -170,17 +170,17 @@ echo $cart_count; ?></span></a>
     <br><br><br> <br><br><br>
 
     <!-- Accordion starts -->
-    <div class="accodriondiv">
+    <div class="accodriondiv"  id='one'>
         <!-- 1st element in accordion -->
         <button class="accordion">Breakfast & Brunch</button>
-        <div class="panel">
-
+        <div class="active">
+        <!-- <div class="panel"> -->
 
 <?php 
         $result = mysqli_query($con,"SELECT * FROM `products` WHERE CATEGORY = 'breakfast-brunch' ");
 while($row = mysqli_fetch_assoc($result)){
     echo "<div class='product_wrapper'>
-    <form method='post' action=''>
+    <form method='post' action='#one'>
     <input type='hidden' name='code' value=".$row['code']." />
     <div class='image'><img class='test' src='../save/".$row['image']."' /></div>
     <div class='name'>".$row['name']."</div>
@@ -195,15 +195,16 @@ while($row = mysqli_fetch_assoc($result)){
 
 
           <!-- 2nd element in accordion -->
-        <button class="accordion">Pizza & Burgers</button>
-        <div class="panel">
+        <button class="accordion" id='two'>Pizza & Burgers</button>
+        <div class="active">
+        <!-- <div class="panel"> -->
            <?php 
         $result = mysqli_query($con,"SELECT * FROM `products` WHERE CATEGORY = 'pizza-burger' ");
 while($row = mysqli_fetch_assoc($result)){
     echo "<div class='product_wrapper'>
     <form method='post' action='#two'>
     <input type='hidden' name='code' value=".$row['code']." />
-    <div class='image'  id='two'><img class='test' src='../save/".$row['image']."' /></div>
+    <div class='image'><img class='test' src='../save/".$row['image']."' /></div>
     <div class='name'>".$row['name']."</div>
     <div class='price'>$".$row['price']."</div>
     <button type='submit' class='buy'>Buy Now</button>
@@ -215,13 +216,14 @@ while($row = mysqli_fetch_assoc($result)){
         </div>
 
           <!-- 3rd element in accordion -->
-        <button class="accordion">Mains & Grills</button>
-        <div class="panel">
+        <button class="accordion"  id='three'>Mains & Grills</button>
+        <div class="active">
+        <!-- <div class="panel"> -->
         <?php 
         $result = mysqli_query($con,"SELECT * FROM `products` WHERE CATEGORY = 'mains-grills' ");
 while($row = mysqli_fetch_assoc($result)){
     echo "<div class='product_wrapper'>
-    <form method='post' action=''>
+    <form method='post' action='#three'>
     <input type='hidden' name='code' value=".$row['code']." />
     <div class='image'><img class='test' src='../save/".$row['image']."' /></div>
     <div class='name'>".$row['name']."</div>
@@ -235,14 +237,15 @@ while($row = mysqli_fetch_assoc($result)){
         </div>
 
         <!-- 4th element in accordion -->
-        <button class="accordion">Soups</button>
-        <div class="panel">
+        <button class="accordion" id='four'>Soups</button>
+        <div class="active">
+        <!-- <div class="panel"> -->
         <?php 
 
         $result = mysqli_query($con,"SELECT * FROM `products` WHERE CATEGORY = 'soups' ");
         while($row = mysqli_fetch_assoc($result)){
         echo "<div class='product_wrapper'>
-        <form method='post' action=''>
+        <form method='post' action='#four'>
         <input type='hidden' name='code' value=".$row['code']." />
         <div class='image'><img class='test' src='../save/".$row['image']."' /></div>
         <div class='name'>".$row['name']."</div>
@@ -256,13 +259,14 @@ while($row = mysqli_fetch_assoc($result)){
         </div>
 
         <!-- 5th element in accordion -->
-        <button class="accordion">Desserts</button>
-        <div class="panel">
+        <button class="accordion"  id='five'>Desserts</button>
+        <div class="active">
+        <!-- <div class="panel"> -->
         <?php 
                 $result = mysqli_query($con,"SELECT * FROM `products` WHERE CATEGORY = 'desserts' ");
              while($row = mysqli_fetch_assoc($result)){
             echo "<div class='product_wrapper'>
-            <form method='post' action=''>
+            <form method='post' action='#five'>
             <input type='hidden' name='code' value=".$row['code']." />
             <div class='image'><img class='test' src='../save/".$row['image']."' /></div>
             <div class='name'>".$row['name']."</div>
@@ -276,15 +280,16 @@ while($row = mysqli_fetch_assoc($result)){
         </div>
 
         <!-- 6th element in accordion -->
-        <button class="accordion">Beverages</button>
-        <div class="panel">
+        <button class="accordion"  id='six'>Beverages</button>
+        <div class="active">
+        <!-- <div class="panel"> -->
 
         <?php 
 
             $result = mysqli_query($con,"SELECT * FROM `products` WHERE CATEGORY = 'beverages' ");
             while($row = mysqli_fetch_assoc($result)){
             echo "<div class='product_wrapper'>
-            <form method='post' action=''>
+            <form method='post' action='#six'>
             <input type='hidden' name='code' value=".$row['code']." />
             <div class='image'><img class='test' src='../save/".$row['image']."' /></div>
             <div class='name'>".$row['name']."</div>

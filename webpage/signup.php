@@ -37,6 +37,21 @@ if(!mysqli_query($mysqli, $query)){
       <label for="show" class="show-btn">View Form</label> -->
       <div class="container">
        <a href="homepage.php"> <label for="show" class="close-btn fas fa-times" title="close"></label> </a>
+
+       <?php if($_SESSION['success']=="You are now logged in"){
+?>
+<p>You are already signed in <?php echo $_SESSION['email']?> ! </p>
+<p>Would you like to <a href="signout.php">Sign out?</a></p>
+
+
+
+
+<?php 
+}
+
+else{
+?>
+
         <div class="text">Signup </div>
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
 <?php include('errors.php'); ?>
@@ -64,5 +79,7 @@ Already have an account? <a href="login.php">Login now</a></div>
 </form>
 </div>
 </div>
+
+<?php }?>
 </body>
 </html>
