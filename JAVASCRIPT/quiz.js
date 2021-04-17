@@ -88,7 +88,7 @@ function buildQuiz() {
           var number = Math.floor(Math.random()*99);
          var letters = generate_letters();
 
-         document.getElementById("promo").innerHTML="Congrats "+name+"! Here is your 15% discount code: "+name+"@"+number+letters;
+         // document.getElementById("promo").innerHTML="Congrats "+name+"! Here is your 15% discount code: "+name+"@"+number+letters;
         // alert('Congrats '+name+'! Here is your 15% discount code: '+name+'@'+number+letters);
          disable();
 
@@ -226,6 +226,6 @@ function buildQuiz() {
  showSlide(currentSlide);
  
  // Event listeners
- submitButton.addEventListener("click", showResults);
+//  submitButton.addEventListener("click", showResults);
  previousButton.addEventListener("click", showPreviousSlide);
  nextButton.addEventListener("click", showNextSlide);

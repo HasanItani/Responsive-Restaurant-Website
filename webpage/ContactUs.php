@@ -62,7 +62,10 @@ if (isset($_POST['submit'])) {
         <a href="signup.php"><?php if ($_SESSION['success'] == "You are now logged in") echo $_SESSION['name'];
                                 else echo "Signup/Login"; ?></a>
         <?php if ($_SESSION['admin'] == "true") { ?>
-            <a href="add.php">ADD</a>
+        <a href="add.php">ADD</a>
+        <?php } ?>
+        <?php if ($_SESSION['admin'] == "true") { ?>
+        <a href="inbox.php">INBOX</a>
         <?php } ?>
         <a href="cart.php"><img style="height:20px; width:20px;" src="../save/cart-icon.png" /> Cart<span>
                 <?php
