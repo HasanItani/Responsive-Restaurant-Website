@@ -16,6 +16,7 @@ include('count.php');
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
   integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
+  
 </head>
 
 <!-- Calls JavaScript function "bodyload()" when webpage is loaded -->
@@ -61,13 +62,17 @@ echo $cart_count; ?></span></a>
   <div id="results"></div>
   <!-- paragraph that shows promo code in case user gets full mark -->
   <p id="promo"></p>
+  <p id="test"></p>
 
   <?php 
+
    include('../footer.html');
 ?>
 </body>
 
 <!-- External CSS library to get star icon -->
+
 <script src="../JAVASCRIPT/quiz.js" type="text/javascript"></script>
+
 
 </html>

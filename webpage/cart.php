@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+
 $status="";
 if (isset($_POST['action']) && $_POST['action']=="remove"){
 if(!empty($_SESSION["shopping_cart"])) {
@@ -24,6 +26,7 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
 }
    
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +44,18 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
 </head>
 <body>
     
+<?php
+if($_SESSION['success'] !="You are now logged in"){
+  ?>
+  <div class="error1"> 
+<p> Please <a href="login.php">Login</a> to proceed </p>
+</div>
+
+<?php 
+}
+else{
+?>
+
 <div class="topnav" id="myTopnav">
     <a href="homepage.php">Home</a>
     <a href="menu.php">Menu</a>
@@ -111,15 +126,79 @@ value="5">5</option>
 </tr>
 <?php
 $total_price += ($product["price"]*$product["quantity"]);
+
+
+
+if(isset($_POST['submit_promo'])){
+
+    $temp=$total_price*15/100;
+    $total_price-=$temp;
+  
+  }
+
 }
+
 ?>
+
 <tr>
 <td colspan="5" align="right">
 <strong>TOTAL: <?php echo "$".$total_price; ?></strong>
+</tr>
+
+<tr>
+<td colspan="5" align="right">
+
+
+<?php 
+if(!isset($_POST['submit_promo'])){
+?>
+  <form action="" method="POST">
+<br>
+<label for="code">Enter Promo code (optional)</label>
+<input type="text" name="code">
+<input type="submit" name="submit_promo">
+</form>
+</tr>
+
+
+<tr>
+<td colspan="5" align="right">
+<form action="checkout.php" method="POST">
+<label for="delivery">Delivery</label>
+<input type="radio" name="out" id="delivery" value="delivery" checked="check">
+<br>
+<label for="pickup">Pickup</label>
+<input type="radio" name="out" id="Pickup" value="pickup">
+
+
+
+</tr>
+
+<tr>
+<td colspan="5" align="right">
+
+    <input type="submit" value="Checkout" />
+</form>
+</tr>
+
+
+
+
+ <?php
+}
+
+
+?>
+
+
 </td>
 </tr>
 </tbody>
 </table> 
+
+
+
+
   <?php
 }else{
  echo "<h3>Your cart is empty!</h3>";
@@ -133,6 +212,6 @@ $total_price += ($product["price"]*$product["quantity"]);
 <?php echo $status; ?>
 </div>
 
-
+<?php }?>
 </body>
 </html>

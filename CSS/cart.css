@@ -5,7 +5,16 @@ html ,body{
   
   }
   
-
+.error1{
+margin-top: 15%;
+font-size: larger;
+}
+.error1 p{
+  color: black;
+}
+.error1 a{
+  color: goldenrod;
+}
 
   /* defines font, size and color of body */
   body {
