@@ -6,14 +6,12 @@ if(!empty($_SESSION["shopping_cart"])) {
     else{$cart_count=0;}
 // $cart_count = count(array_keys($_SESSION["shopping_cart"]));
 
-if(session_id())
-{
-     // session has been started
+
+if(!isset($_SESSION['success'])){
+    $_SESSION['success']="logged out";
 }
-else
-{
-    $_SESSION['sucess']="logged out";
- 
+if(!isset($_SESSION['admin'])){
+    $_SESSION['admin']="false";
 }
 
 ?>
