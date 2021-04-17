@@ -67,6 +67,7 @@ if(empty($_SESSION["shopping_cart"])) {
 
 
 
+
      <!-- top navigator bar -->
 <div class="topnav" id="myTopnav">
     <a href="homepage.php">Home</a>
@@ -79,7 +80,7 @@ if(empty($_SESSION["shopping_cart"])) {
 <?php if($_SESSION['admin']=="true"){ ?>
     <a href="add.php">ADD</a>
 <?php } ?>
-    <a href="cart.php"><img style="height:30px; width:30px;" src="../save/cart-icon.png" /> Cart<span>
+    <a href="cart.php"><img id="cart" style="height:30px; width:30px;" src="../save/orange_cart.png" /> Cart<span>
     <?php 
     if(!empty($_SESSION["shopping_cart"])) {
 $cart_count = count(array_keys($_SESSION["shopping_cart"]));}

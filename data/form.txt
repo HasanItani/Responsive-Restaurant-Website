@@ -1,4 +1,0 @@
-example@example.com, example, 
-YASSINEAH@students.rhu.edulb, passwordali, 
-itanihh@students.rhu.edu.lb, password, 
-itanimh@students.rhu.edu.lb, password123, 

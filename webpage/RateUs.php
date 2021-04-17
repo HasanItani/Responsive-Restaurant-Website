@@ -66,6 +66,7 @@ if(!mysqli_query($mysqli, $query)){
 $date = date("r");
 $query2 = "INSERT INTO rate (date, taste,service, hygiene,friendliness,professionalism) 
 VALUES('$date' ,'$taste', '$service', '$hygiene', '$friendliness', '$professionalism')";
+mysqli_query($mysqli, $query2);
 
 //  if(mysqli_query($mysqli, $query2)){
 // echo "done";
