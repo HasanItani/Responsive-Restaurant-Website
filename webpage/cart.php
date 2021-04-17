@@ -67,6 +67,9 @@ else{
 <?php if($_SESSION['admin']=="true"){ ?>
     <a href="add.php">ADD</a>
 <?php } ?>  
+<?php if ($_SESSION['admin'] == "true") { ?>
+        <a href="inbox.php" class = "active">INBOX</a>
+        <?php } ?>
     <a href="cart.php"class="active"><img style="height:15px; width:15px;" src="../save/cart-icon.png" /> Cart<span>
     <?php 
     if(!empty($_SESSION["shopping_cart"])) {
