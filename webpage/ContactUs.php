@@ -1,5 +1,3 @@
-//contactUs
-
 <!DOCTYPE html>
 
 
@@ -7,6 +5,8 @@
 
 include('count.php');
 include('S-db-con.php');
+
+
 
 $query =
     'CREATE TABLE IF NOT EXISTS `messages` (
@@ -29,7 +29,6 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $content = $_POST['message'];
     mysqli_query($mysqli, "INSERT INTO messages (fullName, email, content) VALUES ('" . $name . "', '" . $email . "','" . $content . "')");
-
 
     
 }
@@ -153,6 +152,12 @@ if (isset($_POST['submit'])) {
 
                     <!-- submit button -->
                     <input id="submit" type="submit" name="submit" value="Send">
+                    <?php
+                    if (isset($_POST['submit'])) {?>
+                    <p style = "color:green; position: relative; margin-top: 10px;"> <b> Message Sent Successfully! </b></p>
+                    <?php
+                    }
+                    ?>
 
                 </form>
             </div>
