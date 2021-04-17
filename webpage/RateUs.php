@@ -1,7 +1,85 @@
 <!DOCTYPE html>
 <?php 
 include('count.php');
+
+
+
+
+if (isset($_POST["submit"])){
+
+
+
+  if (isset($_POST["starA"])){
+
+  $taste  = $_POST['starA'];  }  
+  
+  else{ $taste  = 0;}  
+   
+
+  if (isset($_POST["starB"])){
+
+    $service  = $_POST['starB'];  }  
+    
+    else{ $service  = 0;}  
+
+
+    if (isset($_POST["starC"])){
+
+      $hygiene  = $_POST['starC'];  }  
+      
+      else{ $hygiene  = 0;}  
+
+
+      if (isset($_POST["starD"])){
+
+        $friendliness  = $_POST['starD'];  }  
+        
+        else{ $friendliness  = 0;}  
+
+
+        if (isset($_POST["starE"])){
+
+          $professionalism  = $_POST['starE'];  }  
+          
+          else{ $professionalism  = 0;}  
+
+          include('S-db-con.php');
+
+          
+
+$query = 
+'CREATE TABLE IF NOT EXISTS `rate` (
+  `id` int(100) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `date` varchar(50) NOT NULL,
+  `taste` int(5) NOT NULL,
+  `service` int(5) NOT NULL,
+  `hygiene` int(5) NOT NULL,
+  `friendliness` int(5) NOT NULL,
+  `professionalism` int(5) NOT NULL
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8';
+
+if(!mysqli_query($mysqli, $query)){
+    echo 'Query error: '. mysqli_error($mysqli);
+    die();
+}
+
+$date = date("r");
+echo $date;
+$query2 = "INSERT INTO rate (date, taste,service, hygiene,friendliness,professionalism) 
+VALUES('$date' ,'$taste', '$service', '$hygiene', '$friendliness', '$professionalism')";
+
+//  if(mysqli_query($mysqli, $query2)){
+// echo "done";
+//  }
+// else{
+//   echo 'Query error: '. mysqli_error($mysqli);
+// }
+
+}
 ?>
+
+
+
 <html>
 
 <head>
@@ -58,7 +136,7 @@ echo $cart_count; ?></span></a>
       </div>
 
       <div class="content" style="display: block;">
-
+      <form method="POST" action="RateUs.php">
         <!-- stars and captions are placed in table of 5 rows & 2 columns -->
         <table border="0" class="table">
           <!-- ROW 1 -->
@@ -70,11 +148,11 @@ echo $cart_count; ?></span></a>
 
                <!-- div containing 1st group of stars -->
               <div class="rate" id="A">
-                <input type="radio" name="starA" id="star1"> <label for="star1"></label>
-                <input type="radio" name="starA" id="star2"><label for="star2"></label>
-                <input type="radio" name="starA" id="star3"><label for="star3"></label>
-                <input type="radio" name="starA" id="star4"><label for="star4"></label>
-                <input type="radio" name="starA" id="star5"><label for="star5"></label>
+                <input type="radio" name="starA" id="star1" value="5"> <label for="star1"></label>
+                <input type="radio" name="starA" id="star2" value="4"><label for="star2"></label>
+                <input type="radio" name="starA" id="star3" value="3"><label for="star3"></label>
+                <input type="radio" name="starA" id="star4" value="2"><label for="star4"></label>
+                <input type="radio" name="starA" id="star5" value="1"><label for="star5"></label>
               </div>
             </th>
           </tr>
@@ -86,11 +164,11 @@ echo $cart_count; ?></span></a>
             <th>
                 <!-- div containing 2nd group of stars -->
               <div class="rate" id="B">
-                <input type="radio" name="starB" id="star6"><label for="star6"></label>
-                <input type="radio" name="starB" id="star7"><label for="star7"></label>
-                <input type="radio" name="starB" id="star8"><label for="star8"></label>
-                <input type="radio" name="starB" id="star9"><label for="star9"></label>
-                <input type="radio" name="starB" id="star10"><label for="star10"></label>
+                <input type="radio" name="starB" id="star6" value="5"><label for="star6"></label>
+                <input type="radio" name="starB" id="star7" value="4"><label for="star7"></label>
+                <input type="radio" name="starB" id="star8" value="3"><label for="star8"></label>
+                <input type="radio" name="starB" id="star9" value="2"><label for="star9"></label>
+                <input type="radio" name="starB" id="star10" value="1"><label for="star10"></label>
               </div>
             </th>
           </tr>
@@ -102,11 +180,11 @@ echo $cart_count; ?></span></a>
             <th>
                 <!-- div containing 3rd group of stars -->
               <div class="rate" id="C">
-                <input type="radio" name="starC" id="star11"><label for="star11"></label>
-                <input type="radio" name="starC" id="star12"><label for="star12"></label>
-                <input type="radio" name="starC" id="star13"><label for="star13"></label>
-                <input type="radio" name="starC" id="star14"><label for="star14"></label>
-                <input type="radio" name="starC" id="star15"><label for="star15"></label>
+                <input type="radio" name="starC" id="star11" value="5"><label for="star11"></label>
+                <input type="radio" name="starC" id="star12" value="4"><label for="star12"></label>
+                <input type="radio" name="starC" id="star13" value="3"><label for="star13"></label>
+                <input type="radio" name="starC" id="star14" value="2"><label for="star14"></label>
+                <input type="radio" name="starC" id="star15" value="1"><label for="star15"></label>
               </div>
             </th>
           </tr>
@@ -118,11 +196,11 @@ echo $cart_count; ?></span></a>
             <th>
                 <!-- div containing 4th group of stars -->
               <div class="rate" id="D">
-                <input type="radio" name="starD" id="star16"><label for="star16"></label>
-                <input type="radio" name="starD" id="star17"><label for="star17"></label>
-                <input type="radio" name="starD" id="star18"><label for="star18"></label>
-                <input type="radio" name="starD" id="star19"><label for="star19"></label>
-                <input type="radio" name="starD" id="star20"><label for="star20"></label>
+                <input type="radio" name="starD" id="star16" value="5"><label for="star16"></label>
+                <input type="radio" name="starD" id="star17" value="4"><label for="star17"></label>
+                <input type="radio" name="starD" id="star18" value="3"><label for="star18"></label>
+                <input type="radio" name="starD" id="star19" value="2"><label for="star19"></label>
+                <input type="radio" name="starD" id="star20" value="1"><label for="star20"></label>
               </div>
             </th>
           </tr>
@@ -134,11 +212,11 @@ echo $cart_count; ?></span></a>
             <th>
                <!-- div containing 5th group of stars -->
               <div class="rate" id="E">
-                <input type="radio" name="starE" id="star21"><label for="star21"></label>
-                <input type="radio" name="starE" id="star22"><label for="star22"></label>
-                <input type="radio" name="starE" id="star23"><label for="star23"></label>
-                <input type="radio" name="starE" id="star24"><label for="star24"></label>
-                <input type="radio" name="starE" id="star25"><label for="star25"></label>
+                <input type="radio" name="starE" id="star21" value="5"><label for="star21"></label>
+                <input type="radio" name="starE" id="star22" value="4"><label for="star22"></label>
+                <input type="radio" name="starE" id="star23" value="3"><label for="star23"></label>
+                <input type="radio" name="starE" id="star24" value="2"><label for="star24"></label>
+                <input type="radio" name="starE" id="star25" value="1"><label for="star25"></label>
               </div>
             </th>
           </tr>
@@ -147,9 +225,9 @@ echo $cart_count; ?></span></a>
             <th colspan="2">
               <br><br>
               <!-- form refering to same webpage (since we dont have back-end server) -->
-              <form method="POST" action="RateUs.php"> 
+           
                 <!-- submit button alert triggering appreciation message when clicked  -->
-                <input type="submit" id="submit" onclick="alert('We appreciate your time taken to rate us')" onclick="rate()"></input>
+                <input type="submit" id="submit" name="submit" onclick="alert('We appreciate your time taken to rate us')" onclick="rate()"></input>
               </form>
 
             </th>

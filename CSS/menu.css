@@ -1,4 +1,4 @@
-/* Branches CSS*/
+
 
 /* defines size and color of body */
 body {
@@ -13,10 +13,19 @@ body {
 .topnav {
   overflow: hidden;
   background-color: black;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  height: auto;
+  width: 100%;
+ 
 }
+
+
 
 /* CSS of top navigator bar hyperlinks  */
 .topnav a {
+
   float: left;
   display: block;
   color: #f2f2f2;

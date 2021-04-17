@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2021 at 01:07 AM
+-- Generation Time: Apr 17, 2021 at 05:45 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.27
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `users`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rate`
+--
+
+CREATE TABLE `rate` (
+  `id` int(100) NOT NULL,
+  `date` varchar(50) NOT NULL,
+  `taste` int(5) NOT NULL,
+  `service` int(5) NOT NULL,
+  `hygiene` int(5) NOT NULL,
+  `friendliness` int(5) NOT NULL,
+  `professionalism` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `rate`
+--
+
+INSERT INTO `rate` (`id`, `date`, `taste`, `service`, `hygiene`, `friendliness`, `professionalism`) VALUES
+(1, '2017-11-20', 1, 1, 2, 2, 2),
+(2, 'Sat, 17 Apr 2021 17:43:28 +0200', 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -49,6 +73,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `address`, `admin`) VALU
 --
 
 --
+-- Indexes for table `rate`
+--
+ALTER TABLE `rate`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -57,6 +87,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `rate`
+--
+ALTER TABLE `rate`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
