@@ -1,6 +1,6 @@
 <?php 
 
-$con  = mysqli_connect('localhost','test','test','cart');
+$con  = mysqli_connect('localhost','test','test','users');
 
 if(!$con ){
     echo "ERROR!";
