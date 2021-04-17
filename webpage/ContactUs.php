@@ -29,6 +29,9 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $content = $_POST['message'];
     mysqli_query($mysqli, "INSERT INTO messages (fullName, email, content) VALUES ('" . $name . "', '" . $email . "','" . $content . "')");
+
+
+    
 }
 ?>
 

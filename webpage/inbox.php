@@ -58,7 +58,7 @@ include('count.php');
         <a href="homepage.php">Home</a>
         <a href="menu.php">Menu</a>
         <a href="branches.php">Branches</a>
-        <a href="ContactUs.php" class="active">Contact Us</a>
+        <a href="ContactUs.php">Contact Us</a>
         <a href="RateUs.php">Rate Us</a>
         <a href="quiz.php">Promo Code</a>
         <a href="signup.php"><?php if ($_SESSION['success'] == "You are now logged in") echo $_SESSION['name'];
@@ -67,7 +67,7 @@ include('count.php');
         <a href="add.php">ADD</a>
         <?php } ?>
         <?php if ($_SESSION['admin'] == "true") { ?>
-        <a href="inbox.php">INBOX</a>
+        <a href="inbox.php" class = "active">INBOX</a>
         <?php } ?>
         <a href="cart.php"><img style="height:20px; width:20px;" src="../save/cart-icon.png" /> Cart<span>
                 <?php
