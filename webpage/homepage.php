@@ -10,7 +10,7 @@ include('count.php');
        <!-- Link to CSS file -->
     <link rel="stylesheet" href="../CSS/homepage.css">  
     <!-- Link to JAVASCRIPT file -->
-    <script src="JAVASCRIPT/homepage.js" type="text/javascript"></script>
+    <script src="../JAVASCRIPT/homepage.js" type="text/javascript"></script>
         <!-- helps keeping webpage responsive  -->
     <meta name="viewport" content="width=device-width, initial-scale=1">  
         <!-- external CSS library to import navigator bar icon  -->
@@ -23,7 +23,7 @@ include('count.php');
 <body id="homepage">
    <!-- top navigator bar -->
 <div class="topnav" id="myTopnav">
-    <a href="#" class="active">Home</a>
+    <a href="#" class = "active">Home</a>
     <a href="menu.php">Menu</a>
     <a href="branches.php">Branches</a>
     <a href="ContactUs.php">Contact Us</a>
@@ -39,8 +39,9 @@ include('count.php');
 $cart_count = count(array_keys($_SESSION["shopping_cart"]));}
 else{$cart_count=0;}
 echo $cart_count; ?></span></a>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">      <!-- JAVASCRIPT function to change navigator dynamically according to dimensions   -->
-   
+
+
+<a href="javascript:void(0);" class="icon" onclick="myFunction()"> <!-- JAVASCRIPT function to change navigator dynamically according to dimensions   -->
       <i class="fa fa-bars"></i> <!-- imported icon that appears on low dimensions -->
     </a>
   </div>

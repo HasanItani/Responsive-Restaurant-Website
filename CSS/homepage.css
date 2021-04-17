@@ -18,7 +18,8 @@ body {
 
 /* background color of top navigator bar */
 .topnav {
-  background-color: red;
+  background-color: black;
+  background: black;
 }
 
 /* CSS of top navigator bar hyperlinks  */
@@ -119,8 +120,9 @@ body {
   }
   /*  displays restaurants logo */
   #bodypic {
+    display: none;
     z-index: 1;
-    display: block;
+    /* display: block; */
     height: 20%;
     width: 30%;
     position: relative;
@@ -136,6 +138,8 @@ body {
   .topnav a:not(:first-child) {
     display: none;
   }
+  #bodypic {
+    display: none;}
 
   /* displays icon on top right */
   .topnav a.icon {
@@ -145,6 +149,8 @@ body {
   /* adapts nav bar position */
   .topnav.responsive {
     position: relative;
+    background: black;
+    background-color:black ;
   }
   /* icon displayed on top right of nav bar */
   .topnav.responsive .icon {
