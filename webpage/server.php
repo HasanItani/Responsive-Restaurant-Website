@@ -52,6 +52,7 @@ if (isset($_POST['reg_user'])) {
       $_SESSION['email'] = $email;
       $_SESSION['name'] = $name ;
       $_SESSION['admin'] = "false" ;
+      $_SESSION['address'] = $address;
       $_SESSION['success'] = "You are now logged in";
       header('location: homepage.php');
 
@@ -66,6 +67,7 @@ if (isset($_POST['reg_user'])) {
   	$_SESSION['email'] = $email;
     $_SESSION['name'] = $name ;
     $_SESSION['admin'] = "true" ;
+    $_SESSION['address'] = $address;
   	$_SESSION['success'] = "You are now logged in";
     header('location: homepage.php');
       }
@@ -117,7 +119,7 @@ if (isset($_POST['login_user'])) {
         $_SESSION['name'] = $row['name'];
         $_SESSION['email'] = $email;
         $_SESSION['success'] = "You are now logged in";
-          
+        $_SESSION['address'] = $row['address'];
           header('location: homepage.php');
         }
 

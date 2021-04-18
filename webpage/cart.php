@@ -136,7 +136,7 @@ if(isset($_POST['submit_promo'])){
 
     $temp=$total_price*15/100;
     $total_price-=$temp;
-  
+    $_SESSION["promo"]="15";
   }
 
 }
@@ -163,6 +163,11 @@ if(!isset($_POST['submit_promo'])){
 </form>
 </tr>
 
+<?php
+}
+
+
+?>
 
 <tr>
 <td colspan="5" align="right">
@@ -187,11 +192,6 @@ if(!isset($_POST['submit_promo'])){
 
 
 
- <?php
-}
-
-
-?>
 
 
 </td>
