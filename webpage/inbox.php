@@ -102,6 +102,8 @@ if ($_SESSION['admin'] == "false") {
     
     $result = mysqli_query($mysqli, "SELECT * FROM `messages`");
     ?>
+    <br><br>
+     <center><h2>Emails</h2></center>
     <table border="1" style="background-color: #0000; color: black; margin: 0 auto;">
       <thead>
         <tr>
@@ -126,9 +128,43 @@ if ($_SESSION['admin'] == "false") {
         ?>
       </tbody>
     </table>
+    <br> <br>
 <?php
-  }
-?>
+  
+  $result2 = mysqli_query($mysqli, "SELECT * FROM `rate`");
+  ?>
+  <center><h2>Rates</h2></center>
+  
+    <table border="1" style="background-color: #0000; color: black; margin: 0 auto;">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Date</th>
+          <th>Taste</th>
+          <th>Service</th>
+          <th>Hygiene</th>
+          <th>Friendliness</th>
+          <th>Professionalism</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+
+        while ($row = mysqli_fetch_assoc($result2)) {
+          echo
+          "<tr>
+            <td>{$row['id']}</td>
+            <td>{$row['date']}</td>
+            <td>{$row['taste']}</td>
+            <td>{$row['service']}</td>
+            <td>{$row['hygiene']}</td>
+            <td>{$row['friendliness']}</td>
+            <td>{$row['professionalism']}</td>
+          </tr>\n";
+        }}
+        ?>
+      </tbody>
+    </table>
 
 
 </body>
