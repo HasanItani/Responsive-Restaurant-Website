@@ -66,6 +66,12 @@ if (isset($_POST['submit'])) {
         <?php if ($_SESSION['admin'] == "true") { ?>
         <a href="add.php">ADD</a>
         <?php } ?>
+
+        <?php if ($_SESSION['admin'] == "true") { ?>
+        <a href="orders.php" >Orders</a>
+        <?php } ?>
+
+
         <?php if ($_SESSION['admin'] == "true") { ?>
         <a href="inbox.php">INBOX</a>
         <?php } ?>

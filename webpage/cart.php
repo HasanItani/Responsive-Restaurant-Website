@@ -66,9 +66,15 @@ else{
     <a href="signup.php"><?php  if($_SESSION['success']=="You are now logged in") echo $_SESSION['name']; else echo "Signup/Login"; ?></a>
 <?php if($_SESSION['admin']=="true"){ ?>
     <a href="add.php">ADD</a>
+
+    <?php if ($_SESSION['admin'] == "true") { ?>
+        <a href="orders.php" >Orders</a>
+        <?php } ?>
+
+
 <?php } ?>  
 <?php if ($_SESSION['admin'] == "true") { ?>
-        <a href="inbox.php" class = "active">INBOX</a>
+        <a href="inbox.php">INBOX</a>
         <?php } ?>
     <a href="cart.php"class="active"><img style="height:15px; width:15px;" src="../save/cart-icon.png" /> Cart<span>
     <?php 

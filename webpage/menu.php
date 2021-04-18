@@ -80,8 +80,14 @@ if(empty($_SESSION["shopping_cart"])) {
 <?php if($_SESSION['admin']=="true"){ ?>
     <a href="add.php">ADD</a>
 <?php } ?>
+
 <?php if ($_SESSION['admin'] == "true") { ?>
-        <a href="inbox.php" class = "active">INBOX</a>
+        <a href="orders.php" >Orders</a>
+        <?php } ?>
+
+
+<?php if ($_SESSION['admin'] == "true") { ?>
+        <a href="inbox.php" >INBOX</a>
         <?php } ?>
     <a href="cart.php"><img id="cart" style="height:30px; width:30px;" src="../save/orange_cart.png" /> Cart<span>
     <?php 

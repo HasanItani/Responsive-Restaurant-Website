@@ -33,8 +33,13 @@ include('count.php');
 <?php if($_SESSION['admin']=="true"){ ?>
     <a href="add.php">ADD</a>
 <?php } ?>
+
 <?php if ($_SESSION['admin'] == "true") { ?>
-        <a href="inbox.php" class = "active">INBOX</a>
+        <a href="orders.php" >Orders</a>
+        <?php } ?>
+
+<?php if ($_SESSION['admin'] == "true") { ?>
+        <a href="inbox.php">INBOX</a>
         <?php } ?>
     <a href="cart.php"><img style="height:20px; width:20px;" src="../save/cart-icon.png" /> Cart<span>
     <?php 

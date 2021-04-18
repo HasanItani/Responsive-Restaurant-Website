@@ -35,7 +35,7 @@ include('count.php');
 
       label {
         display: inline-block;
-        width: 115px;
+      
       }
 
       body {
@@ -68,12 +68,11 @@ include('count.php');
         <?php } ?>
 
         <?php if ($_SESSION['admin'] == "true") { ?>
-        <a href="orders.php" >Orders</a>
+        <a href="orders.php" class="active" >Orders</a>
         <?php } ?>
 
-
         <?php if ($_SESSION['admin'] == "true") { ?>
-        <a href="inbox.php" class = "active">INBOX</a>
+        <a href="inbox.php" >INBOX</a>
         <?php } ?>
         <a href="cart.php"><img style="height:20px; width:20px;" src="../save/cart-icon.png" /> Cart<span>
                 <?php
@@ -97,35 +96,108 @@ if ($_SESSION['admin'] == "false") {
     echo "ERROR!";
   } 
   
+
+
   else {
 
-    
-    $result = mysqli_query($mysqli, "SELECT * FROM `messages`");
+    if(isset($_POST['submitdone'])){
+
+      $modify = $_POST['done'];
+      
+      $sql = "UPDATE `orders` SET isDone=1 WHERE id=$modify";
+      
+      if(!mysqli_query($mysqli, $sql)){
+        echo 'Query error: '. mysqli_error($mysqli);
+        die();
+      }
+      
+      
+      
+      
+      }
+
+
+    $result = mysqli_query($mysqli, "SELECT * FROM `orders`");
     ?>
-    <table border="1" style="background-color: #0000; color: black; margin: 0 auto;">
+    <table border="1" style="background-color: #0000; color: black; margin: 100px auto;">
       <thead>
         <tr>
           <th>ID</th>
+          <th>Order</th>
+          <th>Price</th>
           <th>Name</th>
-          <th>E-mail</th>
-          <th>Message</th>
+          <th>Email</th>
+          <th>Method</th>
+          <th>Address</th>
+          <th>Promo</th>
+          <th>isDone</th>
         </tr>
       </thead>
       <tbody>
         <?php
 
+if(isset($_POST['submit_show'])){
+
+if($_POST['show']=="Completed"){
+
+  $result = mysqli_query($mysqli, "SELECT * FROM `orders` WHERE isDone=1 ");
+}
+
+elseif($_POST['show']=="Incompleted"){
+
+  $result = mysqli_query($mysqli, "SELECT * FROM `orders` WHERE isDone=0 ");
+}
+        
+}
+
+
+
         while ($row = mysqli_fetch_assoc($result)) {
           echo
           "<tr>
             <td>{$row['id']}</td>
-            <td>{$row['fullName']}</td>
+            <td>{$row['order']}</td>
+            <td>{$row['price']}</td>
+            <td>{$row['name']}</td>
             <td>{$row['email']}</td>
-            <td>{$row['content']}</td>
+            <td>{$row['method']}</td>
+            <td>{$row['address']}</td>
+            <td>{$row['promo']}</td>
+            <td>{$row['isDone']}</td>
+           
           </tr>\n";
         }
         ?>
       </tbody>
     </table>
+   
+<br><br><br>  
+
+    <form action="" method="POST">
+    <center>
+    
+        <label for="done">Enter ID to mark done:</label>
+        <input type="number" name="done" id="done" required>
+        <input type="submit" name="submitdone">
+        </center>
+    </form>
+
+    <form action="" method="POST">
+    <center>
+    <br>
+    <br>
+        <label for="all">Show all orders:</label>
+        <input type="radio" name="show" id = "all" value = "All">
+        <br>
+        <label for="completed">Show completed orders:</label>
+        <input type="radio" name="show" id= "completed" value = "Completed">
+        <br>
+        <label for="incompleted">Show incompleted orders:</label>
+        <input type="radio" name="show" id= "incompleted" value = "Incompleted">
+        
+        <br><input type="submit" name="submit_show">
+        </center>
+    </form>
 <?php
   }
 ?>
